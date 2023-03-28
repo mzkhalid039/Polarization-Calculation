@@ -17,4 +17,5 @@ This script requires the following packages to be installed: - `numpy` - `matplo
 
 Note: The input files should have the same format as the standard VASP input/output file format. 
 
-## License This code is released under the [MIT License](LICENSE).
+## License 
+This code is released under the [MIT License](LICENSE).
