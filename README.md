@@ -1,4 +1,4 @@
-# Polarization-Born-charges
+# Macroscopic Polarization from Born charges
 This code reads in input files POSCAR, CONTCAR, and Born.txt from the same directory, prompts the user to input lattice parameters, calculates the differences in fractional coordinates for each axis (taking into account periodic boundary conditions), plots the contour plots of differences along each axis, calculates the dipole moment, and finally calculates the polarization along x, y, and z-axis in unit of uC/cm2. This code uses this formula to calculate the macroscopic polarization:
 
 $P^i = \frac{e}{\Omega_c} \sum_{\alpha}\omega_{\alpha}Z_{\alpha}^* \mu_{\alpha}^{(i)}$
