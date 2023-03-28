@@ -9,15 +9,15 @@ b = float(input("Enter lattice vector B: "))
 c = float(input("Enter lattice vector C: "))
 
 # Read in atomic coordinates from input files
-with open('/Volumes/MAC1/KNOB/Polarization_script/POSCAR', 'r') as f:
+with open('POSCAR', 'r') as f:
     lines = f.readlines()
     pos_atoms = np.array([list(map(float, line.split()[:3])) for line in lines[8:]])
 
-with open('/Volumes/MAC1/KNOB/Polarization_script/CONTCAR', 'r') as f:
+with open('CONTCAR', 'r') as f:
     lines = f.readlines()
     cont_atoms = np.array([list(map(float, line.split()[:3])) for line in lines[8:]])
 
-with open('/Volumes/MAC1/KNOB/Polarization_script/Born.txt', 'r') as f:
+with open('Born.txt', 'r') as f:
     born_data = np.loadtxt(f)
 
 # Calculate differences in fractional coordinates for each axis, taking into account periodic boundary conditions
@@ -66,15 +66,14 @@ cbar.set_label('Difference')
 plt.tight_layout()
 plt.show()
 
-Conv = 1602.176 # Value of Conv
-
 # Read dipole_moment.txt file and calculate polarization
 diff_data = np.loadtxt('difference.txt')
 dipole_moment = np.multiply(diff_data[:, :3], born_data[:, :3])
-polarization = np.sum(dipole_moment, axis=0) / (a * b * c)*Conv  # divide by cell volume to get polarization
+polarization = np.sum(dipole_moment, axis=0) / (a * b * c)  # divide by cell volume to get polarization
 
 # Save polarization array to file and print output
 np.savetxt('polarization.txt', polarization)
 print("Final polarization along x-axis: ", polarization[0])
 print("Final polarization along y-axis: ", polarization[1])
 print("Final polarization along z-axis: ", polarization[2])
+
