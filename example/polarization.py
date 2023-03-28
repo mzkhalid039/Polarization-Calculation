@@ -1,4 +1,4 @@
-
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
@@ -8,16 +8,21 @@ a = float(input("Enter lattice vector A: "))
 b = float(input("Enter lattice vector B: "))
 c = float(input("Enter lattice vector C: "))
 
-# Read in atomic coordinates from input files
-with open('/Volumes/MAC1/KNOB/Polarization_script/POSCAR', 'r') as f:
+# Get the directory of the script
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+# Read in atomic coordinates from POSCAR
+with open(os.path.join(dir_path, 'POSCAR'), 'r') as f:
     lines = f.readlines()
     pos_atoms = np.array([list(map(float, line.split()[:3])) for line in lines[8:]])
 
-with open('/Volumes/MAC1/KNOB/Polarization_script/CONTCAR', 'r') as f:
+# Read in atomic coordinates from CONTCAR
+with open(os.path.join(dir_path, 'CONTCAR'), 'r') as f:
     lines = f.readlines()
     cont_atoms = np.array([list(map(float, line.split()[:3])) for line in lines[8:]])
 
-with open('/Volumes/MAC1/KNOB/Polarization_script/Born.txt', 'r') as f:
+# Read in Born effective charges from Born.txt
+with open(os.path.join(dir_path, 'Born.txt'), 'r') as f:
     born_data = np.loadtxt(f)
 
 # Calculate differences in fractional coordinates for each axis, taking into account periodic boundary conditions
@@ -79,4 +84,3 @@ np.savetxt('polarization.txt', polarization)
 print("Final polarization along x-axis: ", polarization[0])
 print("Final polarization along y-axis: ", polarization[1])
 print("Final polarization along z-axis: ", polarization[2])
-
