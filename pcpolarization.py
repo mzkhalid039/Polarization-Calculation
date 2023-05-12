@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 import os
 import numpy as np
@@ -11,10 +12,8 @@ import spglib
 from ase.spacegroup import get_spacegroup
 from ase.io import read
 
-
-
-# Get the directory of the script
-dir_path = os.path.dirname(os.path.realpath(__file__))
+# Get the current directory
+dir_path = os.getcwd()
 
 # Read in atomic coordinates from POSCAR
 with open(os.path.join(dir_path, 'POSCAR'), 'r') as f:
@@ -25,6 +24,8 @@ for line in lines[8:]:
     coords = line.split()[:3]
     if len(coords) == 3:
         pos_atoms.append(list(map(float, coords)))
+    else:
+        break  # stop reading if line does not contain atomic coordinates
 
 pos_atoms = np.array(pos_atoms)
 
@@ -37,6 +38,8 @@ for line in lines[8:]:
     coords = line.split()[:3]
     if len(coords) == 3:
         cont_atoms.append(list(map(float, coords)))
+    else:
+        break  # stop reading if line does not contain atomic coordinates
 
 cont_atoms = np.array(cont_atoms)
 
