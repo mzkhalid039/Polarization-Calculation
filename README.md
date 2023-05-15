@@ -8,13 +8,15 @@ Here e is the electron charge, $\Omega_c$ is the volume of the bulk unit-cell $i
 ## Requirements
 This script requires the following packages to be installed: - `numpy` - `matplotlib`
 
-## Usage 
+## Usage of [bcpolarization.py](./bcpolarization.py)
 1. Place the input files POSCAR, CONTCAR, and Born.txt in the same directory as the Python script. 
 2. Type `python polarization.py` to run the script.
 3. Follow the on-screen prompt to enter the lattice parameters.
 4. The script will plot the contour plots of differences along each axis and print the final polarization values along x, y, and z-axis. 
 5. A polarization.txt file containing the polarization values will be created in the same directory as the script. 
 
+## Usage of [pcpolarization.py](./bcpolarization.py)
+  Place the input (polar) CONTCAR and output (non-polar) POSCAR file in the same folder as the script. Run the script and it will give a prompt to enter formal charges for the elements. Enter the values and you will get get the final polarization values in units of $\micro$C/m$^2$.
 Note: The input files should have the same format as the standard VASP input/output file format. 
 
 ## License 
