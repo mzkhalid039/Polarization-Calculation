@@ -16,7 +16,7 @@ This script requires the following packages to be installed: - `numpy` - `matplo
 5. A polarization.txt file containing the polarization values will be created in the same directory as the script. 
 
 ## Usage of [pcpolarization.py](./bcpolarization.py)
-  Place the input (polar) CONTCAR and output (non-polar) POSCAR file in the same folder as the script. Run the script and it will give a prompt to enter formal charges for the elements. Enter the values and you will get the final polarization values in units of $\micro$C/m$^2$.
+  Place the input (polar) CONTCAR and output (non-polar) POSCAR file in the same folder as the script. Run the script and it will give a prompt to enter formal charges for the elements. Enter the values and you will get the final polarization values in units of $\micro C/m^2$.
 
 #Note: The input files should have the same format as the standard VASP input/output file format. 
 
