@@ -16,7 +16,7 @@ This script requires the following packages to be installed: - `numpy` - `matplo
 5. A polarization.txt file containing the polarization values will be created in the same directory as the script. 
 
 ## Usage of [pcpolarization.py](./bcpolarization.py)
- Place the input (polar) non-centrosymmtric CONTCAR and (non-polar) centrosymmtric POSCAR files in the same folder as the script. Run the script and it will give a prompt to enter formal charges for the elements. Enter the values and you will get the final polarization values in units of $\micro C/cm^2$. You can find the example of using this script in the [examples](/examples) folder for Rhombohedral [$BaTiO_3$](example/BTO), tetragonal [$PbTiO_3$](example/PTO) and hexagonal [$YMnO_3$](example/YMO). 
+ Place the input (polar) non-centrosymmtric CONTCAR and (non-polar) centrosymmtric POSCAR files in the same folder as the script. Run the script and it will give a prompt to enter formal charges for the elements. Enter the values and you will get the final polarization values in units of $\micro C/cm^2$. You can find the example of using this script in the [examples](/examples) folder for Rhombohedral [BaTiO_3](example/BTO), tetragonal [$PbTiO_3$](example/PTO) and hexagonal [$YMnO_3$](example/YMO). 
 
  Note: The input files should have the same format as the standard VASP input/output file format. 
 
