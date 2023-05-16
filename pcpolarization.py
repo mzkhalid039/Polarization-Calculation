@@ -48,8 +48,8 @@ poscar = read('POSCAR')
 contcar = read('CONTCAR')
 
 # Get the space group
-sp = get_spacegroup(contcar,symprec=1e-5)
-print(sp)
+sp_CONTCAR = get_spacegroup(contcar,symprec=1e-5)
+print(sp_CONTCAR)
 
 # Get the lattice constants
 a, b, c, alpha, beta, gamma = contcar.get_cell_lengths_and_angles()
@@ -62,6 +62,21 @@ print('alpha =', alpha)
 print('beta =', beta)
 print('gamma =', gamma)
 
+
+# Get the space group
+sp_POSCAR = get_spacegroup(poscar,symprec=1e-5)
+print(sp_POSCAR)
+
+# Get the lattice constants
+a, b, c, alpha, beta, gamma = poscar.get_cell_lengths_and_angles()
+
+# Print the lattice constants
+print('a =', a)
+print('b =', b)
+print('c =', c)
+print('alpha =', alpha)
+print('beta =', beta)
+print('gamma =', gamma)
 
 # Extract the lattice vector and coordinate information
 lattice = np.array([float(lines[i].split()[j]) for j in range(3) for i in range(2, 5)]).reshape(3,3)
@@ -150,11 +165,11 @@ diff_data = np.loadtxt('difference.txt')
 Conv = 1602.176; # Value of Conv
 dipole_moment = np.multiply(diff_data[:, :3], charge[:, np.newaxis])
 polarization = np.sum(dipole_moment, axis=0) / (a * b * c)*Conv  # divide by cell volume to get polarization
+polarization = np.abs(polarization)  # take absolute value to get positive polarization
 
 # Save polarization array to file and print output
 np.savetxt('dipole_moments.txt', dipole_moment)
 np.savetxt('polarization.txt', polarization)
-print("Final polarization along x-axis: ", polarization[0])
-print("Final polarization along y-axis: ", polarization[1])
-print("Final polarization along z-axis: ", polarization[2])
-
+print("Final polarization along x-axis: {:.2f} µC/cm²".format(polarization[0]))
+print("Final polarization along y-axis: {:.2f} µC/cm²".format(polarization[1]))
+print("Final polarization along z-axis: {:.2f} µC/cm²".format(polarization[2]))
